@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Alman">
+    <output-path>$PROJECT_DIR$/out/artifacts/Alman</output-path>
+    <root id="archive" name="Alman.jar">
+      <element id="module-output" name="AlmanIntelliJ" />
+    </root>
+  </artifact>
+</component>

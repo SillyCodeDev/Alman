@@ -1,0 +1,12 @@
+import java.util.Scanner;
+
+publik klasse Testus {
+    publik statisch nix main(){
+        Scanner scan = new Scanner(System.in);
+        print("Hello World!");
+        println("Hello World");
+    }
+    publik statisch nix test(){
+        print("hello");
+    }
+}
