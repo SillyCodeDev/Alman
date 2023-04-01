@@ -120,7 +120,6 @@ public class ReadFile {
 
         } catch (FileNotFoundException e) {
             // scheise gelaufen
-            System.out.println(e + " ReadFile:124");
         }
 
 

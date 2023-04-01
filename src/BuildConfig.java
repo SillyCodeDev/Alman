@@ -1,25 +1,22 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BuildConfig {
     public static void build(Scanner scan) {
-        File dir = new File("./config");
-        if(!dir.exists()){
-            dir.mkdirs();
-        }
+        ArrayList<String> s = new ArrayList<>();
         try {
-            FileWriter w  = new FileWriter(dir + "/" +"Keywords.txt");
             System.out.print("Use standard config?\n[Y/n]:");
             if(scan.nextLine().contains("Y")) {
-                w.write("main(){ = public static void main(String[] args){\n");
-                w.write("publik = public\n");
-                w.write("klasse = class\n");
-                w.write("statisch = static\n");
-                w.write("nix = void\n");
-                w.write("print = System.out.print\n");
-                w.write("println = println\n");
+                s.add("main(){ = main(String[] args){");
+                s.add("publik = public");
+                s.add("klasse = class");
+                s.add("statisch = static");
+                s.add("nix = void");
+                s.add("print = System.out.print");
+                s.add("println = println");
             } else {
                 System.out.println("Now you can create a Config. Exit with Ctrl + c or type ^C");
                 while (true){
@@ -29,8 +26,17 @@ public class BuildConfig {
                     System.out.print("Write insert (need to be java code): ");
                     String in2 = scan.nextLine();
                     if(in2.contains("^C")) break;
-                    w.write(in.trim() + " = " + in2.trim());
+                    s.add(in.trim() + " = " + in2.trim());
                 }
+            }
+
+            File dir = new File("./config");
+            if(!dir.exists()){
+                dir.mkdirs();
+            }
+            FileWriter w  = new FileWriter(dir + "/" + "Keywords.txt");
+            for (int i = 0; i < s.size(); i++) {
+                w.write(s.get(i) + "\n");
             }
             w.close();
         } catch (IOException e) {

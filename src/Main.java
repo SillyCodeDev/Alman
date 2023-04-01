@@ -1,20 +1,12 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        //set up the classes
-        BuildJava BJ = new BuildJava();
-        ReadFile RF = new ReadFile();
-
         //check for config
-        try (BufferedReader ignored1 = new BufferedReader(new FileReader("config/Keywords.txt"))){
-
-        } catch (Exception e) {
+        if (!new File("./config/Keywords.txt").exists()) {
             System.out.println("Config missing.");
             BuildConfig.build(scan);
         }
@@ -27,8 +19,7 @@ public class Main {
             switch (in) {
                 case "help":
                     System.out.println("build = build a .java file");
-                    //System.out.println("run = run a .java file");
-                    //System.out.println("jar = jar the input file ");
+                    System.out.println("run = run a .java file");
 
                     //exit as last
                     System.out.println("exit = to exit");
@@ -38,6 +29,10 @@ public class Main {
                     Commands.build(scan);
                     break;
 
+                case "run":
+                    Commands.run(scan);
+                    break;
+
                 case "exit":
                     System.exit(0);
                     break;
@@ -45,6 +40,8 @@ public class Main {
                 default:
                     if (in.contains("build")) {
                         Commands.build(in);
+                    } else if (in.contains("run")) {
+                        Commands.run(in);
                     }
 
                     //command failed

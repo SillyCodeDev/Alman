@@ -1,4 +1,4 @@
-main(){ = public static void main(String[] args){
+main(){ = main(String[] args){
 publik = public
 klasse = class
 statisch = static

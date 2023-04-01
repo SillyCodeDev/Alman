@@ -2,9 +2,10 @@ import java.util.Scanner;
 
 publik klasse Testus {
     publik statisch nix main(){
-        Scanner scan = new Scanner(System.in);
         print("Hello World!");
         println("Hello World");
+        Scanner scan = new Scanner(System.in);
+        print(scan.nextLine());
     }
     publik statisch nix test(){
         print("hello");
